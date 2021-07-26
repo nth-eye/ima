@@ -90,8 +90,8 @@ void ima_encode(IMA *state, int16_t *in, uint8_t *out, size_t len, bool header)
 
     for (size_t i = 0; i < even_len; i += 2) {
 
-        uint8_t msb = ima_encode_step(state, in[i]     >> 4);
-        uint8_t lsb = ima_encode_step(state, in[i + 1] >> 4);
+        uint8_t msb = ima_encode_step(state, in[i]);
+        uint8_t lsb = ima_encode_step(state, in[i + 1]);
 
         *out++ = (msb << 4) | lsb;
     }
