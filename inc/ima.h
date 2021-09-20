@@ -1,5 +1,5 @@
-#ifndef ima_H
-#define ima_H
+#ifndef IMA_H
+#define IMA_H
 
 #include <stdint.h>
 #include <stddef.h>
@@ -25,4 +25,4 @@ int16_t ima_decode_step(IMA *state, uint8_t code);
 }
 #endif
 
-#endif // ima_H
+#endif
