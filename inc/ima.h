@@ -6,7 +6,7 @@
 #include <stdbool.h>
 
 #ifdef __cplusplus
-#define extern "C" {
+extern "C" {
 #endif
 
 typedef struct {
