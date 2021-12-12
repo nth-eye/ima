@@ -13,7 +13,7 @@ int16_t samples[1024];
 // ...fill samples...
 
 ima_init(&ima);
-ima_encode(&ima, samples, encoded, sizeof(samples));
+ima_encode(&ima, samples, encoded, sizeof(samples), false);
 
 ```
 
