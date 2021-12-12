@@ -80,10 +80,10 @@ void ima_init(IMA *state)
 void ima_encode(IMA *state, int16_t *in, uint8_t *out, size_t len, bool header)
 {
     if (header) {
-        out[0] = state->last >> 8;
-        out[1] = state->last & 0xff;
-        out[2] = state->step_idx & 0xff;
-        out[3] = 0;
+        *out++ = state->last >> 8;
+        *out++ = state->last & 0xff;
+        *out++ = state->step_idx & 0xff;
+        *out++ = 0;
     }
 
     size_t even_len = len & ~1;
@@ -97,7 +97,6 @@ void ima_encode(IMA *state, int16_t *in, uint8_t *out, size_t len, bool header)
     }
 }
 
-// Input length doesn't include header length (4 bytes)
 void ima_decode(IMA *state, uint8_t *in, int16_t *out, size_t len, bool header)
 {
     size_t offset = 0;
@@ -105,7 +104,7 @@ void ima_decode(IMA *state, uint8_t *in, int16_t *out, size_t len, bool header)
     if (header) {
         state->last     = in[1] | (in[0] << 8);
         state->step_idx = in[2];
-        offset          = 4;
+        offset          = 2;
     }
 
     for (size_t i = offset; i < len + offset; ++i) {
