@@ -18,18 +18,18 @@ int main()
         return 1;
     }
 
-    IMA     state;
+    Ima     state;
     int16_t samples[2];
     uint8_t byte;
     size_t  cnt;
     size_t  total = 0;
 
-    ima_init(&state);
+    state.init();
 
     do {
         cnt = fread(samples, 2, 2, in);
 
-        ima_encode(&state, samples, &byte, 2, false);
+        state.encode(samples, &byte, 2, false);
 
         fwrite(&byte, 1, 1, out);
 
