@@ -13,7 +13,7 @@ uint8_t encoded[512]; // must be at least sizeof(samples) / 4
 // ...fill samples...
 
 ima.init();
-ima.encode(samples, encoded, sizeof(samples), false);
+ima.encode(samples, encoded, sizeof(samples) / sizeof(int16_t), false);
 
 ```
 
